@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Victory } from "./victories.entity";
+import { Victory, Venue, Image } from "./";
 
 @Entity()
 export class User {
@@ -26,4 +26,10 @@ export class User {
 
   @OneToMany(() => Victory, (victory) => victory.winner)
   victories: Victory[];
+
+  @OneToMany(() => Venue, (venue) => venue.owner)
+  venues: Venue[];
+
+  @OneToMany(() => Image, (image) => image.uploadedBy)
+  images: Image[];
 }

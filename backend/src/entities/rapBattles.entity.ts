@@ -1,5 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-import { Victory } from "./victories.entity";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+} from "typeorm";
+import { Victory, Venue } from "./";
 
 @Entity({ name: "rapBattles" })
 export class RapBattle {
@@ -20,4 +26,7 @@ export class RapBattle {
 
   @OneToMany(() => Victory, (victory) => victory.rapBattle)
   victories: Victory[];
+
+  @ManyToOne(() => Venue, (venue) => venue.rapBattles)
+  venue: Venue;
 }

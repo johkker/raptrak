@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { User } from "./users.entity";
-import { RapBattle } from "./rapBattles.entity";
+import { User, RapBattle } from "./";
 
 @Entity()
 export class Victory {
