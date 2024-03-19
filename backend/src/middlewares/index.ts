@@ -1,3 +1,3 @@
 import errorHandler from "./errorHandler.middleware";
-
-export { errorHandler };
+import schemaValidator from "./schemaValidator.middleware";
+export { errorHandler, schemaValidator };

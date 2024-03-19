@@ -1,8 +1,8 @@
-// give me an Entity of venues, to match the context of my application:
-
 import {
   Column,
+  CreateDateColumn,
   Entity,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -16,6 +16,9 @@ export class Venue {
 
   @Column()
   name: string;
+
+  @Column()
+  insta: string;
 
   @Column()
   address: string;
@@ -32,8 +35,14 @@ export class Venue {
   @Column()
   phone: string;
 
-  @ManyToOne(() => User, (user) => user.venues)
-  owner: User;
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @ManyToOne(() => User, (user) => user.createdVenues)
+  createdBy: User;
+
+  @ManyToMany(() => User, (user) => user.ownedVenues)
+  owners: User[];
 
   @OneToMany(() => RapBattle, (rapBattle) => rapBattle.venue)
   rapBattles: RapBattle[];

@@ -1,19 +1,32 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Victory, Venue, Image } from "./";
+import { Gender } from "../enums";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
+  @Column({ nullable: false })
   email: string;
 
-  @Column()
+  @Column({ nullable: false })
   password: string;
+
+  @Column({ nullable: false })
+  document: string;
+
+  @Column({ type: "date", nullable: false })
+  birthdate: Date;
 
   @Column({ default: false })
   isRapper: boolean;
@@ -27,8 +40,11 @@ export class User {
   @OneToMany(() => Victory, (victory) => victory.winner)
   victories: Victory[];
 
-  @OneToMany(() => Venue, (venue) => venue.owner)
-  venues: Venue[];
+  @OneToMany(() => Venue, (venue) => venue.createdBy)
+  createdVenues: Venue[];
+
+  @ManyToMany(() => Venue, (venue) => venue.owners)
+  ownedVenues: Venue[];
 
   @OneToMany(() => Image, (image) => image.uploadedBy)
   images: Image[];

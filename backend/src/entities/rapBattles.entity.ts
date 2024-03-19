@@ -21,7 +21,7 @@ export class RapBattle {
   @Column()
   city: string;
 
-  @Column()
+  @Column({default: 0})
   likes: number;
 
   @OneToMany(() => Victory, (victory) => victory.rapBattle)
