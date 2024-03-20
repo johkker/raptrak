@@ -1,0 +1,6 @@
+[submodule "rt-frontend"]
+	path = rt-frontend
+	url = https://github.com/johkker/rt-frontend.git
+[submodule "rt-backend"]
+	path = rt-backend
+	url = https://github.com/johkker/rt-backend.git
