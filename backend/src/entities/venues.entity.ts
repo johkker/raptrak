@@ -7,7 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { User, RapBattle } from "./";
+import { User, RapBattle, Like } from "./";
 
 @Entity()
 export class Venue {
@@ -46,4 +46,7 @@ export class Venue {
 
   @OneToMany(() => RapBattle, (rapBattle) => rapBattle.venue)
   rapBattles: RapBattle[];
+
+  @OneToMany(() => Like, (like) => like.venue)
+  likes: Like[];
 }

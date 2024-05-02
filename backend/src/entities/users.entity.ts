@@ -1,12 +1,13 @@
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Victory, Venue, Image } from "./";
-import { Gender } from "../enums";
+import { Victory, Venue, Image, Like, Track } from "./";
+import { UserTypes } from "../enums";
 
 @Entity()
 export class User {
@@ -28,8 +29,12 @@ export class User {
   @Column({ type: "date", nullable: false })
   birthdate: Date;
 
-  @Column({ default: false })
-  isRapper: boolean;
+  @Column("enum", {
+    enum: UserTypes,
+    array: true,
+    default: [UserTypes.COMMON_USER],
+  })
+  types: UserTypes[];
 
   @Column({ default: false })
   isAdmin: boolean;
@@ -43,9 +48,17 @@ export class User {
   @OneToMany(() => Venue, (venue) => venue.createdBy)
   createdVenues: Venue[];
 
-  @ManyToMany(() => Venue, (venue) => venue.owners)
-  ownedVenues: Venue[];
-
   @OneToMany(() => Image, (image) => image.uploadedBy)
   images: Image[];
+
+  @OneToMany(() => Like, (like) => like.user)
+  likes: Like[];
+
+  @ManyToMany(() => Venue, (venue) => venue.owners)
+  @JoinTable()
+  ownedVenues: Venue[];
+
+  @ManyToMany(() => Track, (track) => track.artists)
+  @JoinTable()
+  tracks: Track[];
 }

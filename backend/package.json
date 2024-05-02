@@ -2,7 +2,7 @@
   "name": "raptrak",
   "version": "1.0.0",
   "description": "App to track rap battles around the world",
-  "main": "index.js",
+  "main": "app.ts",
   "engines": {
     "node": ">=20.6.0"
   },
@@ -21,11 +21,13 @@
     "@types/yup": "^0.32.0",
     "bcrypt": "^5.1.1",
     "cpf-cnpj-validator": "^1.0.3",
+    "date-fns": "^3.6.0",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "passport": "^0.7.0",
     "passport-apple": "^2.0.2",
     "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.11.5",
     "ts-node-dev": "^2.0.0",
     "typeorm": "^0.3.16",
     "typescript": "^5.0.4",

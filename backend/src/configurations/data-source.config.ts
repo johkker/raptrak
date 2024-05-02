@@ -1,12 +1,14 @@
 import { DataSource } from "typeorm";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export const Database = new DataSource({
   type: "postgres",
   url: process.env.DATABASE_URL,
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? { rejectUnauthorized: false }
-      : false,
+  ssl: {
+    rejectUnauthorized: process.env.NODE_ENV === "production",
+  },
   synchronize: false,
   logging: true,
   entities:

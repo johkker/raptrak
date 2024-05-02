@@ -1,8 +1,13 @@
 import * as yup from "yup";
 import bcrypt from "bcrypt";
 import { validateDocument } from "../../utilities";
-// create a validation schema using yup, for my User entity
-const UserSchema = yup.object().shape({
+import { UserTypes } from "../../enums";
+import { addYears } from "date-fns";
+
+const fourteenYearsAgo = addYears(new Date(), -14);
+const seventeenYearsAgo = addYears(new Date(), -17);
+
+const CreateUserSchema = yup.object().shape({
   name: yup.string().required(),
   email: yup
     .string()
@@ -24,7 +29,19 @@ const UserSchema = yup.object().shape({
     .date()
     .required()
     .min(new Date(1900, 1, 1))
-    .max(new Date(2003, 1, 1)),
+    .max(fourteenYearsAgo),
+  types: yup
+    .array()
+    .of(
+      yup
+        .string()
+        .oneOf([
+          UserTypes.VENUE_ADMIN,
+          UserTypes.COMMON_USER,
+          UserTypes.RAPPER,
+          UserTypes.VENUE_ADMIN,
+        ])
+    ),
 });
 
-export default UserSchema;
+export default CreateUserSchema;

@@ -1,3 +1,3 @@
-import { Gender } from "./users";
+import { Gender, UserTypes } from "./users";
 
-export { Gender };
+export { Gender, UserTypes };

@@ -4,7 +4,7 @@ import { GlobalError } from "../../errors";
 import { userRepository } from "../../repositories";
 
 const createUserSVC = async (data: IUserRegister) => {
-  const { name, email, password, birthdate, document } = data;
+  const { name, email, password, birthdate, document, types } = data;
 
   const existingUser = await userRepository.findOne({
     where: { email: email },
@@ -20,6 +20,7 @@ const createUserSVC = async (data: IUserRegister) => {
   user.password = password;
   user.birthdate = birthdate;
   user.document = document;
+  user.types = types;
 
   userRepository.create(user);
   await userRepository.save(user);
