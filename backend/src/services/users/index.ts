@@ -15,7 +15,6 @@ const createUserSVC = async (data: IUserRegister) => {
     throw new GlobalError('E-mail or document already registered', 400);
   }
 
-  // Criação de um novo usuário
   const user = new User();
   user.name = name;
   user.email = email;
@@ -24,7 +23,6 @@ const createUserSVC = async (data: IUserRegister) => {
   user.document = document;
   user.types = types;
 
-  // Salvar o novo usuário no repositório
   userRepository.create(user);
   await userRepository.save(user);
 
