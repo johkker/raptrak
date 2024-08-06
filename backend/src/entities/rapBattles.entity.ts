@@ -4,8 +4,10 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToOne,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
-import { Victory, Venue } from "./";
+import { Victory, Venue, User } from "./";
 
 @Entity({ name: "rapBattles" })
 export class RapBattle {
@@ -29,4 +31,12 @@ export class RapBattle {
 
   @ManyToOne(() => Venue, (venue) => venue.rapBattles)
   venue: Venue;
+
+  @ManyToMany(() => User)
+  @JoinTable()
+  participants: User[];
+
+  @ManyToMany(() => User)
+  @JoinTable()
+  hosts: User[];
 }

@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
-import { AnySchema } from "yup";
-import { GlobalError } from "../errors";
+import { AnySchema } from 'yup';
+import { GlobalError } from '../errors';
 
 const schemaValidator =
   (shape: AnySchema) =>
@@ -11,7 +11,7 @@ const schemaValidator =
     return await shape
       .validate(data, {
         abortEarly: false,
-        stripUnknown: true,
+        stripUnknown: true
       })
       .then((value) => {
         req.newInput = value;
@@ -19,7 +19,7 @@ const schemaValidator =
         return next();
       })
       .catch((err) => {
-        throw new GlobalError(err.name, 400);
+        throw new GlobalError(err.errors, 400);
       });
   };
 

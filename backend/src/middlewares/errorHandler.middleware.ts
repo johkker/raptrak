@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express";
-import { GlobalError } from "../errors";
+import { NextFunction, Request, Response } from 'express';
+import { GlobalError } from '../errors';
 
-const errorHandler = (
+const handleError = (
   err: any,
   req: Request,
   res: Response,
@@ -9,13 +9,11 @@ const errorHandler = (
 ) => {
   if (err instanceof GlobalError) {
     return res.status(err.statusCode).json({
-      error: {
-        message: err.message,
-      },
+      message: err.message
     });
   }
   console.log(err);
-  return res.status(500).json({ message: "Internal server error" });
+  return res.status(500).json({ message: 'Internal server error' });
 };
 
-export default errorHandler;
+export default handleError;

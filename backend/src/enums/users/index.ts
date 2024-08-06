@@ -10,4 +10,5 @@ export enum UserTypes {
   COMMON_USER = "common_user",
   RAPPER = "rapper",
   BEATMAKER = "beatmaker",
+  HOST = "host"
 }

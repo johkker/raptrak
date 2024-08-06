@@ -1,5 +1,5 @@
-import * as express from "express";
-import { jwt } from "jsonwebtoken";
+import * as express from 'express';
+import { jwt } from 'jsonwebtoken';
 
 declare global {
   namespace Express {

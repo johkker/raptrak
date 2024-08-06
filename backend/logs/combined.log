@@ -1,0 +1,5 @@
+{"email":"john.doe@example.com","level":"info","message":"User created successfully","service":"raptrak-service","timestamp":"2024-07-02T15:37:57.534Z","userId":1}
+{"email":"john.doe@example.com","level":"info","message":"User created successfully","service":"raptrak-service","timestamp":"2024-07-15T22:12:07.669Z","userId":"f43009c1-bf41-415d-935d-e2b72c82c877"}
+{"email":"john.don@example.com","level":"info","message":"User created successfully","service":"raptrak-service","timestamp":"2024-07-15T22:16:30.946Z","userId":"5fc1dd4e-ddbf-4229-b837-3425f610f467"}
+{"email":"gary.host@example.com","level":"info","message":"User created successfully","service":"raptrak-service","timestamp":"2024-07-15T22:17:44.411Z","userId":"ae8cbc47-13d7-4b5e-b8fe-7c034338562a"}
+{"email":"gary.host2@example.com","level":"info","message":"User created successfully","service":"raptrak-service","timestamp":"2024-07-15T22:43:39.230Z","userId":"e585a942-5c60-43b0-a0be-0154fae93575"}
